@@ -14,6 +14,11 @@ npm install && bower install
 gulp serve
 ```
 
+## TODOS
+* Incorporate user ability for themed quotations
+* Improve web application interface
+* Ability to swap photos with new quotes
+
 ## Contributing
 
 Make edits and submit pull requests
