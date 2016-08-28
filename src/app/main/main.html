@@ -1,27 +1,47 @@
-<div layout="row">
+  <header>
+    <navbar></navbar>
+  </header>
 
-  <md-content>
-    <header>
-      <acme-navbar creation-date="main.creationDate"></acme-navbar>
-    </header>
+<md-content>
+  <section class="jumbotron">
+    <h1 class="heading">
+      Welcome to Gazing Pensive Dot Club
+    </h1>
 
-    <section class="jumbotron">
-      <h1>Pensive Gazing Picture</h1>
+    <img src="/assets/images/gazing_pensively.png" alt="gazing pensive" class="picture">
+    <div class="quote" ng-if="vm.quoteData">
+      "{{vm.quoteData[vm.counter].text}}"
+    </div>
+      <md-button class="md-accent" ng-click="vm.counter=+vm.counter + 1">Tell me more</md-button>
+  </section>
+</md-content>
+<md-content class="body">
+  
+    <h2>Looking Thoughtful, Feeling Thoughtful</h2>
 
-      <h2>Looking Thoughtfully</h2>
-      <img src="/assets/images/gazing_pensively.png" alt="gazing pensive">
-      <p class="lead">
-        "{{vm.quoteData[vm.counter].text}}""
+    <div>
+      Feeling mindful? Hopeful? Wistful? 
+      
+      Gaze pensively with me for a moment as we consider big life questions. 
 
-        <br>
-        <br>
+      <ul>
+        <li>What if the air is poisonous, and it just takes 80 years to kill us?</li>
+        <li>What are snails even trying to do?</li>
+        <li>What if "Soy Milk" is just Regular Milk introducing himself in Spanish?</li>
+      </ul>
 
-        <button class="btn" ng-click="vm.counter=vm.counter + 1">New quote</button>
+      Big questions need big answers. Let's stare off into the distance and ponder life's mysteries together.
 
-    </section>
+      <br>
+      <br>
+      - Jeff Burlin
+      
+    </div>
+    
+</md-content>
 
-
-
-  </md-content>
-
-</div>
+    <footer>
+        <div layout="row" layout-align="center center">
+            Creating Lovingly by Pensive Gazers Everywhere
+        </div>
+    </footer>

@@ -10,8 +10,9 @@
     var vm = this;
     
     vm.quoteData = utilityService.shuffleArray(quotesData);
-
     vm.counter = 1;
+    console.log(vm.quoteData);
+
 
   }
 })();

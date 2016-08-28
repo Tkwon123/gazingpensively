@@ -1,0 +1,35 @@
+section.jumbotron {
+  padding: 1px 30px;
+  background-color: #5C6B73;
+  text-align: center;
+
+  color: white;
+
+
+    .heading{
+      font-size: 30px;
+      padding: 10px 10px 10px 10px;
+    }
+
+  .picture {
+  border-radius: 100%; // full circular image
+  margin: 10px;
+  }
+  .quote{
+    background-color: #C2DFE3;
+    border-radius: 30px;
+    color: #253237;
+    padding: 10px;
+  }
+}
+
+.body {
+  padding: 30px;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
