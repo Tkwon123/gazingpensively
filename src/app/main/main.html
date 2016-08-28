@@ -1,4 +1,4 @@
-<div layout="vertical" layout-fill>
+<div layout="row">
 
   <md-content>
     <header>
@@ -6,13 +6,22 @@
     </header>
 
     <section class="jumbotron">
-      <h1>Welcome to the Gazing Pensive Club</h1>
+      <h1>Pensive Gazing Picture</h1>
+
+      <h2>Looking Thoughtfully</h2>
+      <img src="/assets/images/gazing_pensively.png" alt="gazing pensive">
       <p class="lead">
+        "{{vm.quoteData[vm.counter].text}}""
+
+        <br>
+        <br>
+
+        <button class="btn" ng-click="vm.counter=vm.counter + 1">New quote</button>
+
     </section>
 
-    <div class="techs" layout-align="center">
 
-    </div>
+
   </md-content>
 
 </div>

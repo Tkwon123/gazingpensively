@@ -12,7 +12,12 @@
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main'
+        controllerAs: 'vm',
+        resolve: {
+          'quotesData' : ['dataService', function(dataService){
+            return dataService.getQuotes('beauty');
+          }]
+        }
       });
 
     $urlRouterProvider.otherwise('/');
