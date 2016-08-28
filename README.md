@@ -10,6 +10,7 @@ Front-end assets for www.gazingpensively.club.
 ## Local builds
 Deploying local server:
 ```
+npm install && bower install
 gulp serve
 ```
 
