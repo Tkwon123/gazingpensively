@@ -14,11 +14,26 @@
     <img src="/assets/images/jeff.jpg" alt="jeff" class="portrait">
   </div>
   <div flex ="40">
-    <div layout="row">
+    <div layout="column">
       <div class="welcome-msg">
         <h1 class="welcome-title">My name is Jeff</h1>
-        <div>I awoke last night from a dream. More of a Nightmare actually. </div>
-        <md-button class="md-primary md-raised" ng-click="vm.enter();">Join me on this journey</md-button>
+
+        <div>
+          <h3>And I'm disheartened by the current state of the internet.</h3>
+          <div>
+            Social media is littered joyous faces, plastic smiles, and fairy tales lives... <br \>
+            <br \>
+            But where do I go to find other thoughtful, stoics? <br \>
+            How do I find those pondering life's big mysteries?  <br \>
+            Who else shares in my dream of dreaming? <br \>
+          </div>
+
+          <h3>Do you share my vision of staring into the sunset and gazing pensively?</h3>
+          
+        </div>
+        <div layout="row" layout-align="center center">
+        <md-button class="md-primary md-raised welcome-btn" ng-click="vm.enter();">Join me on this thoughtful journey</md-button>
+        </div>
       </div>
     </div>
   <div flex="20"></div>

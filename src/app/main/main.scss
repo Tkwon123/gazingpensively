@@ -1,5 +1,5 @@
-section.jumbotron {
-  padding: 1px ;
+.container {
+  padding: 10px ;
   background-color: #5C6B73;
   text-align: center;
   color: white;
@@ -9,6 +9,7 @@ section.jumbotron {
   }
   .picture {
     border-radius: 100%; // full circular image
+    margin: 30px;
     padding: 0px 10px 10px 10px;
   }
   .quote {
@@ -16,9 +17,17 @@ section.jumbotron {
     border-radius: 30px;
     color: #253237;
     padding: 10px;
+    width: 600px;
   }
 }
 
 .body {
   padding: 30px;
 }
+
+
+  // @media (min-width: 800px) {
+  //   .body {
+  //     width:300px;
+  //   }
+  // }
