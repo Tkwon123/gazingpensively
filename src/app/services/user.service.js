@@ -6,7 +6,7 @@
         .service('userService', userService);
 
     /** @ngInject */
-    function userService($scope, $firebaseAuth) {
+    function userService($scope, $firebaseAuth, $log) {
 
         var auth = $firebaseAuth();
 
@@ -18,9 +18,9 @@
 
         function signIn(email, password) {
             return auth.$signInWithEmailAndPassword(email, password).then(function(firebaseUser) {
-                console.log("Signed in as:", firebaseUser.uid);
+                $log.log("Signed in as:", firebaseUser.uid);
             }).catch(function(error) {
-                console.error("Authentication failed:", error);
+                $log.error("Authentication failed:", error);
             });
         }
 
@@ -29,10 +29,10 @@
 
             return auth.$createUserWithEmailAndPassword(email, password)
                 .then(function(firebaseUser) {
-                    console.log("User " + firebaseUser.uid + " created successfully!");
+                    $log.log("User " + firebaseUser.uid + " created successfully!");
                     userRef.push().set(firebaseUser.uid)
                 }).catch(function(error) {
-                    console.error("Error: ", error);
+                    $log.error("Error: ", error);
                 });
         }
 

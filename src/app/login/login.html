@@ -1,0 +1,62 @@
+<md-card flex-offset="25" flex="50" layout="column" class="md-inline-form">
+	<div ng-show="vm.newUser">
+
+		<md-card-title>
+			<md-card-title-text>Create a Pensive Account</md-card-title-text>
+		</md-card-title>
+		<md-card-content>
+			<form ng-submit="vm.createUser(loginForm.$invalid)" name="loginForm">
+				<md-input-container layout>
+					<label>E-mail</label>
+					<input ng-model="vm.email" type="email" name="userEmail" required>
+				</md-input-container>oo
+				<md-input-container layout>
+					<label>Password</label>
+					<input ng-model="vm.password" type="password" name="userPassword" minlength="6" maxlength="100" ng-pattern="/^(?=.*?[a-z])(?=.*?[0-9]).{6,}$/ "
+						ng-focus="showPasswordError=true" ng-blur="showPasswordError=false" required>
+
+					<div ng-messages="signForm.userPassword.$error " role="alert ">
+						<div ng-if="showPasswordError">
+							<div ng-message-exp="[ 'required', 'minlength', 'maxlength', 'pattern'] ">
+								Password should be at least six characters with one number.
+							</div>
+						</div>
+					</div>
+				</md-input-container>
+				<md-input-container>
+					<label>Upload Image</label>
+					<input type="file" id="image-file" placeholder="Upload Image" file-uploader="vm.userImage">
+				</md-input-container>
+
+				<md-card-actions layout="row" layout-align="end center">
+					<md-button class="md-raised md-primary" type="submit">Create User</md-button>
+					<md-button class="md-raised" ng-click="vm.newUser = !vm.newUser"> I already have an account </md-button>
+				</md-card-actions>
+			</form>
+
+		</md-card-content>
+	</div>
+
+	<div ng-hide="vm.newUser">
+		<md-card-title>
+			<md-card-title-text>Login in Form</md-card-title-text>
+		</md-card-title>
+		<md-card-content>
+			<form ng-submit="vm.signIn(signForm.$invalid)" name="signForm">
+				<md-input-container>
+					<label>E-mail</label>
+					<input ng-model="vm.email" type="email " name="userEmail " required>
+				</md-input-container>
+				<md-input-container>
+					<label>Password</label>
+					<input ng-model="vm.password" type="password" name="userPassword" required>
+
+				</md-input-container>
+				<md-card-actions layout="row" layout-align="end center">
+					<md-button class="md-raised md-primary" type="submit">Sign In</md-button>
+					<md-button class="md-raised" ng-click="vm.newUser = !vm.newUser"> I need an account </md-button>
+				</md-card-actions>
+			</form>
+		</md-card-content>
+	</div>
+</md-card>

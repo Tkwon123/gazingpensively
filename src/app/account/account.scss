@@ -1,0 +1,42 @@
+.account {
+    .account-card {
+        text-align: left;
+        .card-title {
+            padding: 10px 20px;
+            background-color: rgb(221, 221, 221);
+            color: #26a69a;
+        }
+        form {
+            padding: 20px;
+        }
+        .user-content {
+            display: inline-block;
+            width: 100%;
+            .user-info {
+                width: 70%;
+                float: left;
+                p {
+                    padding: 5px 0;
+                }
+            }
+            .user-image {
+                width: 30%;
+                float: left;
+                img {
+                    height: 4em;
+                    border-radius: 50%;
+                }
+            }
+        }
+        .file-form {
+            padding: 0;
+            .file-input {
+                border-bottom: 1px solid #9e9e9e;
+                margin: 10px 0;
+                input {
+                    padding: 5px 0;
+                }
+            }
+        }
+    }
+}

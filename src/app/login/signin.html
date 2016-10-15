@@ -1,0 +1,29 @@
+<div layout="row" layout-align="center center" class="auth-sign">
+	<div flex="45" flex-sm="90">
+		<div class="sign-logo"><img src="/assets/images/EinsteinLogin.png">
+			<p> Let's be friends, create an account with me! </p>
+		</div>
+		<div class="form-content">
+			<form name="signForm">
+				<md-input-container>
+					<label>E-mail</label>
+					<input ng-model="vm.email" type="email" name="userEmail" required>
+				</md-input-container>
+				<md-input-container>
+					<label>Password</label>
+					<input ng-model="vm.password" type="password" name="userPassword" minlength="10" maxlength="100" ng-pattern="/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{7,}$/"
+						ng-focus="showPasswordError=true" ng-blur="showPasswordError=false" required>
+					<div ng-messages="signForm.userPassword.$error" role="alert">
+						<div ng-if="showPasswordError">
+							<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+								Password should be at least seven characters with one uppercase character and one number.
+							</div>
+						</div>
+					</div>
+				</md-input-container>
+				<md-button class="md-raised md-primary" ng-click="vm.createUser(signForm.$invalid);">Create</md-button>
+				<div class="back-login" ng-click="vm.backLogin();"><span>Already have an Account</span></div>
+			</form>
+		</div>
+	</div>
+</div>

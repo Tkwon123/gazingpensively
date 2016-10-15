@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -10,24 +10,42 @@
     $stateProvider
       .state('welcome', {
         url: '/',
-        templateUrl: 'app/welcome/welcome.html',
-        controller: 'WelcomeController',
-        controllerAs: 'vm',
+        views: {
+          '@': {
+            templateUrl: 'app/welcome/welcome.html',
+            controller: 'WelcomeController',
+            controllerAs: 'vm'
+          }
+        },
         resolve: {
-          'quotesData' : ['dataService', function(dataService){
+          'quotesData': ['dataService', function (dataService) {
             return dataService.getQuotes('beauty');
           }]
         }
       })
       .state('home', {
         url: '/home',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'vm',
+        views: {
+          '@': {
+            templateUrl: 'app/main/main.html',
+            controller: 'MainController',
+            controllerAs: 'vm'
+          }
+        },
         resolve: {
-          'quotesData' : ['dataService', function(dataService){
+          'quotesData': ['dataService', function (dataService) {
             return dataService.getQuotes('beauty');
           }]
+        }
+      })
+      .state('login', {
+        url: '/login',
+        views: {
+          '@': {
+            templateUrl: 'app/login/login.html',
+            controller: 'LoginController',
+            controllerAs: 'vm'
+          }
         }
       })
     $urlRouterProvider.otherwise('/');
