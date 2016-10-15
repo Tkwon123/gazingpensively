@@ -6,7 +6,7 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController($state, authService, $q) {
+  function LoginController($state, authService, $q, $log) {
 
     var vm = this;
 
@@ -31,7 +31,9 @@
       if (!formInvalid) {
         return $q(function (resolve, reject) {
           authService.createUser(vm.email, vm.password);
+          resolve();
         }).then(function () {
+          $log.log('completed user');
           uploadImage(vm.userImage);
         });
       }
@@ -46,6 +48,7 @@
     }
 
     function uploadImage(image) {
+      $log.log("uploading image: ", image);
       authService.uploadImage(image);
       angular.element('#image-file').val(null);
     }
