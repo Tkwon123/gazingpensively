@@ -6,7 +6,7 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController($state, authService, $q, $log) {
+  function LoginController($state, authService, $q, $log, toastr) {
 
     var vm = this;
 
@@ -15,7 +15,6 @@
     vm.createUser = createUser;
     vm.goSign = goSign;
     vm.backLogin = backLogin;
-    vm.uploadImage = uploadImage;
 
     vm.email = '';
     vm.password = '';
@@ -33,24 +32,19 @@
           authService.createUser(vm.email, vm.password);
           resolve();
         }).then(function () {
-          $log.log('completed user');
-          uploadImage(vm.userImage);
+          authService.uploadImage(vm.userImage);
+          toastr.success("Successfully created account");
+          $state.go('home');
         });
       }
     }
 
     function goSign() {
-      $state.go('sign');
+      $state.go('home');
     }
 
     function backLogin() {
-      $state.go('login');
-    }
-
-    function uploadImage(image) {
-      $log.log("uploading image: ", image);
-      authService.uploadImage(image);
-      angular.element('#image-file').val(null);
+      $state.go('home');
     }
 
   }

@@ -31,7 +31,6 @@
             authSession.$signInWithEmailAndPassword(email, password)
                 .then(function (auth) {
                     $log.debug("User " + auth.uid + " signin successfully!");
-                    $state.go('admin');
                 }).catch(function (error) {
                     // Handle Errors here.
                     var errorCode = error.code;
@@ -46,14 +45,13 @@
         }
 
         function createUser(email, password) {
-            $log.log('creating user', email, password);
             authSession.$createUserWithEmailAndPassword(email, password)
                 .then(function (firebaseUser) {
-                    $log.log("Created: ", firebaseUser);
                     ref.child('users').child(firebaseUser.uid).set({
                         email: email,
                         dateRegistered: moment.utc().valueOf()
                     });
+                    signIn(email, password);
                     $log.debug("User " + firebaseUser.uid + " created successfully!");
                     return firebaseUser.uid;
                     // $state.go('admin');
@@ -91,13 +89,12 @@
             return deferred.promise;
         }
 
-        function updateUserProfile(url) {
-            $log.log("Updating User Profile with URL:", url);
+        function updateUserProfileImage(url) {
             var user = firebase.auth().currentUser;
             user.updateProfile({
                 photoURL: url
             }).then(function () {
-                $log.debug("Update successful.");
+                $log.debug("Profile updated with image: ", url);
             }, function (error) {
                 $log.debug(error);
             });
@@ -105,7 +102,6 @@
 
         function uploadImage(file) {
             var deferred = $q.defer();
-            $log.log("Uploading file: ", file);
             var uploadTask = storageRef.child('images/' + file.name).put(file);
             uploadTask.on('state_changed', function (snapshot) {
                 // Observe state change events such as progress, pause, and resume
@@ -118,7 +114,7 @@
             }, function () {
                 // Handle successful uploads on complete
                 var downloadURL = uploadTask.snapshot.downloadURL;
-                updateUserProfile(downloadURL);
+                updateUserProfileImage(downloadURL);
                 setUserImage(downloadURL);
                 deferred.resolve(downloadURL);
             });
