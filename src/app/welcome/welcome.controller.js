@@ -1,4 +1,4 @@
-(function(){
+(function () {
     'use strict';
 
     angular
@@ -6,14 +6,14 @@
         .controller('WelcomeController', WelcomeController);
 
     /** @ngInject */
-    function WelcomeController($state){
+    function WelcomeController($state) {
         var vm = this;
-        vm.enter = goHome;
+        vm.enter = enter;
 
-        function goHome(){
-            $state.go('home');
+        function enter() {
+            $state.go('profiles');
         }
 
     }
 
-}());
+} ());

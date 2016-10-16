@@ -7,6 +7,10 @@
 		<md-card-content>
 			<form ng-submit="vm.createUser(loginForm.$invalid)" name="loginForm">
 				<md-input-container layout>
+					<label>Name</label>
+					<input ng-model="vm.name" type="text" name="userText" required>
+				</md-input-container>
+				<md-input-container layout>
 					<label>E-mail</label>
 					<input ng-model="vm.email" type="email" name="userEmail" required>
 				</md-input-container>

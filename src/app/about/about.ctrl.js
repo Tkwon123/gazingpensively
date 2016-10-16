@@ -1,12 +1,12 @@
-(function() {
+(function () {
   'use strict';
 
   angular
     .module('gazingpensive')
-    .controller('MainController', MainController);
+    .controller('AboutController', AboutController);
 
   /** @ngInject */
-  function MainController(quotesData, utilityService) {
+  function AboutController(quotesData, utilityService) {
     var vm = this;
 
     vm.quoteData = utilityService.shuffleArray(quotesData);

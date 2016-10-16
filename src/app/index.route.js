@@ -18,17 +18,29 @@
           }
         },
         resolve: {
-          'quotesData': ['dataService', function (dataService) {
-            return dataService.getQuotes('beauty');
+        }
+      })
+      .state('profiles', {
+        url: '/main',
+        views: {
+          '@': {
+            templateUrl: 'app/profiles/profiles.html',
+            controller: 'ProfileController',
+            controllerAs: 'vm'
+          }
+        },
+        resolve: {
+          'usersData': ['dataService', function (dataService) {
+            return dataService.getUsers();
           }]
         }
       })
-      .state('home', {
-        url: '/home',
+      .state('about', {
+        url: '/about',
         views: {
           '@': {
-            templateUrl: 'app/main/main.html',
-            controller: 'MainController',
+            templateUrl: 'app/about/about.html',
+            controller: 'AboutController',
             controllerAs: 'vm'
           }
         },
@@ -36,6 +48,9 @@
           'quotesData': ['dataService', function (dataService) {
             return dataService.getQuotes('beauty');
           }]
+          // 'authSession': ['authService', function (authService) {
+          //   return authService.checkAuthSession();
+          // }]
         }
       })
       .state('login', {

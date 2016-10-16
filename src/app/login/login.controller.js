@@ -34,17 +34,17 @@
         }).then(function () {
           authService.uploadImage(vm.userImage);
           toastr.success("Successfully created account");
-          $state.go('home');
+          $state.go('profiles');
         });
       }
     }
 
     function goSign() {
-      $state.go('home');
+      $state.go('profiles');
     }
 
     function backLogin() {
-      $state.go('home');
+      $state.go('profiles');
     }
 
   }

@@ -1,0 +1,16 @@
+<header>
+	<navbar></navbar>
+</header>
+
+<div masonry>
+	<div class="masonry-brick" ng-repeat="user in vm.users">
+		<img ng-src="{{ user.photoURL }}" alt="A masonry brick">
+	</div>
+</div>
+<!--
+<div class="md-primary">
+	<div ng-repeat="user in vm.users">
+		<img ng-src="{{user.photoURL}}"></img>
+	</div>-->
+
+</div>
