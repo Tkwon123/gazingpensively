@@ -1,16 +1,16 @@
 <md-toolbar layout="row" class="navbar">
 
-	<md-button flex="10" href="/" aria-label="Gazing Pensive Club">Gazing Pensive </md-button>
+	<md-button flex="10" flex-xs="50" href="/" aria-label="Gazing Pensive Club">Gazing Pensive </md-button>
 
 
-	<md-menu flex>
+	<md-menu flex flex-xs="50">
 		<md-button md-menu-origin ng-click="$mdOpenMenu()">Options</md-button>
 		<md-menu-content width="2">
 			<md-menu-item>
-				<md-button ng-click="vm.createUser();">Create</md-button>
+				<md-button ng-click="vm.go('login');">Create</md-button>
 			</md-menu-item>
 			<md-menu-item>
-				<md-button>About</md-button>
+				<md-button ng-click="vm.go('about');">About</md-button>
 			</md-menu-item>
 		</md-menu-content>
 	</md-menu>

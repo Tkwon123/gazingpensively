@@ -23,12 +23,13 @@
     /** @ngInject */
     function NavbarController(moment, $state) {
       var vm = this;
-
+      vm.go = go;
       // "vm.creationDate" is available by directive option "bindToController: true"
       vm.relativeDate = moment(vm.creationDate).fromNow();
 
-      vm.createUser = function () {
-        $state.go('login');
+      function go(location) {
+        console.log(location);
+        $state.go(location);
       }
     }
   }

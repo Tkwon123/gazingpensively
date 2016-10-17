@@ -2,11 +2,30 @@
 	<navbar></navbar>
 </header>
 
-<div masonry>
-	<div class="masonry-brick" ng-repeat="user in vm.users">
-		<img ng-src="{{ user.photoURL }}" alt="A masonry brick">
-	</div>
+<div class="content">
+	<md-content flex-xs="100" flex="20" layout="row">
+		<div flex layout="column">
+			<md-card ng-repeat="user in vm.users track by $index">
+				<img ng-src="{{user.photoURL}}" class="md-card-image" style="height:80%" alt="gazing pensive">
+				<mv-card-title>
+					<md-card-title-text>
+						<span class="md-headline">{{user.name}}</span>
+					</md-card-title-text>
+				</mv-card-title>
+
+				<md-card-content class="md-padding">
+					{{vm.quotesData[$index].text}}
+				</md-card-content>
+
+				<md-button class="md-icon-button" aria-label="Favorite">
+					<md-icon md-svg-icon="assets/icons/favorite.svg"></md-icon>
+				</md-button>
+				</md-card-actions>
+			</md-card>
+		</div>
+	</md-content>
 </div>
+
 <!--
 <div class="md-primary">
 	<div ng-repeat="user in vm.users">

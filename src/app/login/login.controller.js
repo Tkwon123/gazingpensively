@@ -16,26 +16,24 @@
     vm.goSign = goSign;
     vm.backLogin = backLogin;
 
-    vm.email = '';
-    vm.password = '';
-    vm.userImage = '';
+    vm.user = {};
 
     function signIn(formInvalid) {
       if (!formInvalid) {
-        authService.signIn(vm.email, vm.password);
+        authService.signIn(vm.user.email, vm.user.password);
       }
     }
 
     function createUser(formInvalid) {
       if (!formInvalid) {
-        return $q(function (resolve, reject) {
-          authService.createUser(vm.email, vm.password);
-          resolve();
-        }).then(function () {
-          authService.uploadImage(vm.userImage);
-          toastr.success("Successfully created account");
-          $state.go('profiles');
-        });
+        authService.createUser(vm.user)
+          .then((function (firebaseId) {
+            $log.log("FIREBASEID: ", firebaseId);
+            $log.log("VM.USER: ", vm.user);
+            authService.uploadImage(vm.userImage, firebaseId);
+            toastr.success("Successfully created account");
+            $state.go('profiles');
+          }));
       }
     }
 

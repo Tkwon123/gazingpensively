@@ -1,3 +1,7 @@
+<header>
+	<navbar></navbar>
+</header>
+
 <md-card flex-offset="25" flex="50" layout="column" class="md-inline-form">
 	<div ng-show="vm.newUser">
 
@@ -8,15 +12,15 @@
 			<form ng-submit="vm.createUser(loginForm.$invalid)" name="loginForm">
 				<md-input-container layout>
 					<label>Name</label>
-					<input ng-model="vm.name" type="text" name="userText" required>
+					<input ng-model="vm.user.name" type="text" name="userText" required>
 				</md-input-container>
 				<md-input-container layout>
 					<label>E-mail</label>
-					<input ng-model="vm.email" type="email" name="userEmail" required>
+					<input ng-model="vm.user.email" type="email" name="userEmail" required>
 				</md-input-container>
 				<md-input-container layout>
 					<label>Password</label>
-					<input ng-model="vm.password" type="password" name="userPassword" minlength="6" maxlength="100" ng-pattern="/^(?=.*?[a-z])(?=.*?[0-9]).{6,}$/ "
+					<input ng-model="vm.user.password" type="password" name="userPassword" minlength="6" maxlength="100" ng-pattern="/^(?=.*?[a-z])(?=.*?[0-9]).{6,}$/ "
 						ng-focus="showPasswordError=true" ng-blur="showPasswordError=false" required>
 
 					<div ng-messages="signForm.userPassword.$error " role="alert ">
@@ -49,11 +53,11 @@
 			<form ng-submit="vm.signIn(signForm.$invalid)" name="signForm">
 				<md-input-container>
 					<label>E-mail</label>
-					<input ng-model="vm.email" type="email " name="userEmail " required>
+					<input ng-model="vm.user.email" type="email " name="userEmail " required>
 				</md-input-container>
 				<md-input-container>
 					<label>Password</label>
-					<input ng-model="vm.password" type="password" name="userPassword" required>
+					<input ng-model="vm.user.password" type="password" name="userPassword" required>
 
 				</md-input-container>
 				<md-card-actions layout="row" layout-align="end center">

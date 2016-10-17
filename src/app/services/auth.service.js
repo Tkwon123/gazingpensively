@@ -44,14 +44,13 @@
             authSession.$signOut();
         }
 
-        function createUser(email, password) {
-            authSession.$createUserWithEmailAndPassword(email, password)
+        function createUser(user) {
+            return authSession.$createUserWithEmailAndPassword(user.email, user.password)
                 .then(function (firebaseUser) {
-                    ref.child('users').child(firebaseUser.uid).set({
-                        email: email,
-                        dateRegistered: moment.utc().valueOf()
-                    });
-                    signIn(email, password);
+                    signIn(user.email, user.password);
+                    delete user.password; // dont save users secrets
+                    user.dateRegistered = moment.utc().valueOf();
+                    ref.child('users').child(firebaseUser.uid).set(user);
                     $log.debug("User " + firebaseUser.uid + " created successfully!");
                     return firebaseUser.uid;
                     // $state.go('admin');
@@ -100,7 +99,7 @@
             });
         }
 
-        function uploadImage(file) {
+        function uploadImage(file, userId) {
             var deferred = $q.defer();
             var uploadTask = storageRef.child('images/' + file.name).put(file);
             uploadTask.on('state_changed', function (snapshot) {
@@ -114,17 +113,16 @@
             }, function () {
                 // Handle successful uploads on complete
                 var downloadURL = uploadTask.snapshot.downloadURL;
-                updateUserProfileImage(downloadURL);
-                setUserImage(downloadURL);
+                setUserImage(downloadURL,userId);
                 deferred.resolve(downloadURL);
             });
             return deferred.promise;
         }
 
-        function setUserImage(url) {
-            var currentUserInfo = firebase.auth().currentUser;
-            ref.child('users').child(currentUserInfo.uid).child('photoURL').set(url);
-            ref.child('images').child(currentUserInfo.uid).set({
+        function setUserImage(url,userId) {
+            console.log("USERID:", userId);
+            ref.child('users').child(userId).child('photoURL').set(url);
+            ref.child('images').child(userId).set({
                 photoURL: url,
                 createdAt: moment.utc().valueOf()
             });

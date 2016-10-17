@@ -32,6 +32,9 @@
         resolve: {
           'usersData': ['dataService', function (dataService) {
             return dataService.getUsers();
+          }],
+          'quotesData': ['dataService', function (dataService) {
+            return dataService.getQuotes('art');
           }]
         }
       })
